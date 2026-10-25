@@ -18,6 +18,7 @@
 - URL：https://www.figma.com/design/p7fJfYMBixu9YU3N66K12e/%E2%91%A2conference?node-id=9-16&m=dev
 - fileKey：p7fJfYMBixu9YU3N66K12e
 - PCフレーム：9:16
+- メインビジュアルはユーザー指定の `asset/img/ogp.png`（2400×1260px）を使う。最新のユーザー指定により、H1では囲まず `.main-visual` のsection内にimgを直接置く。タイトル・開催情報は画像に含まれるため、同じタイトルや別のH1を追加しない。幅100%・高さautoで画像の比率を保ち、トリミングしない。
 - 実用上の問題があれば変更候補として提示し、無断でデザインや文言を変更しない。
 - トップはヘッダー、メインビジュアル、ABOUT、SPEAKER、SESSION、申し込みフォーム、フッターの7ブロックで構成する。
 - SPEAKERは3名、SESSIONは4件。

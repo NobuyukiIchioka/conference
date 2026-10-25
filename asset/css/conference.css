@@ -1,0 +1,22 @@
+/* メインビジュアル：画像の比率を保ち、全体を画面幅いっぱいに表示する。 */
+.main-visual_image {
+  width: 100%;
+  height: auto;
+}
+
+.site-header_inner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem; /* Add some padding for better spacing */
+}
+
+.site-header_logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.75rem;      /* 28px */
+  font-weight: 700;        /* Bold */
+  line-height: 1;          
+  letter-spacing: 0.05em; 
+  color: #D136D1;          /* White */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
