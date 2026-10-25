@@ -1,11 +1,13 @@
 # conference 制作・実装指示
 
-最終更新：2026-10-23
+最終更新：2026-10-25
 
 ## 1. 目的と進め方
 
 - 課題③「conference」のコーディングを行う。
 - ユーザーとこのチャットでPM・仕様整理を行い、実装はPC側のCodexで進める。
+- ユーザー自身のコーディング学習を優先し、Codexは説明・診断・レビューを中心にサポートする。実装は明示的に依頼された範囲だけを行い、先回りして完成させない。
+- 不要な共通化・ファイル分割・未使用のCSSを増やさず、初学者が追いやすいコードを優先する。相談・原因確認だけの依頼では、無断で修正しない。
 - PC版を優先する。SP設計・実装は予備タスクとして保留し、自動的に着手しない。
 - 完成希望は2026年11月中旬。制作期間は約1か月、作業時間は週6時間・1日約1時間を目安とする。
     ただ、期限としては11月中で考える。
@@ -18,7 +20,7 @@
 - URL：https://www.figma.com/design/p7fJfYMBixu9YU3N66K12e/%E2%91%A2conference?node-id=9-16&m=dev
 - fileKey：p7fJfYMBixu9YU3N66K12e
 - PCフレーム：9:16
-- メインビジュアルはユーザー指定の `asset/img/ogp.png`（2400×1260px）を使う。最新のユーザー指定により、H1では囲まず `.main-visual` のsection内にimgを直接置く。タイトル・開催情報は画像に含まれるため、同じタイトルや別のH1を追加しない。幅100%・高さautoで画像の比率を保ち、トリミングしない。
+- メインビジュアルはユーザー指定の `asset/img/ogp.png`（2400×1260px）を使う。H1では囲まず `.main-visual` のsection内にimgを直接置く。タイトル・開催情報は画像に含まれるため、メインビジュアル側に同じタイトルやH1を追加しない。ヘッダーのロゴ「WDC」をH1にする現在の構造とは区別する。画像は幅100%・高さautoで比率を保ち、トリミングしない方針（現状のクラス名不一致は後述）。
 - 実用上の問題があれば変更候補として提示し、無断でデザインや文言を変更しない。
 - トップはヘッダー、メインビジュアル、ABOUT、SPEAKER、SESSION、申し込みフォーム、フッターの7ブロックで構成する。
 - SPEAKERは3名、SESSIONは4件。
@@ -28,6 +30,8 @@
 - ルートに `index.php` を配置する。
 - `asset/` の中に `css/`、`img/`、`js/` を置く。
 - 基本のCSSファイルは `asset/css/conference.css` とする。
+- `asset/css/base.css` はリセット・汎用グリッド・補助クラス、`conference.css` はこのサイト固有の設定に使う。読み込み順は `base.css` → `conference.css`。
+- `asset/fonts/` にMontserratの通常・Italicの可変フォントと `OFL.txt` がある。現状のHTMLではGoogle FontsからMontserratの700を読み込み、ローカルフォントの `@font-face` は未実装。
 - LPのため `parts/` は作らず、ヘッダーやフッターなどをPHPの共通パーツに分割しない。
 - JavaScriptのファイル名、保存データのファイル名と配置先は実装前に整理する。
 
@@ -116,3 +120,28 @@
 
 ページ分割、管理者一覧へのアクセス方法、JSONファイルの配置・データ構造・初期化方法・安全な読み書きの手順、流入元の選択肢、確認画面から入力画面へ戻る仕様は未決。保存方式はPHP＋JSONファイルで確定済み。
 必要になった時点でユーザーと決め、決定事項と提案を混同しない。
+
+## 11. 現在の制作状況・引き継ぎ（2026-10-25）
+
+### 実装済み・途中の内容
+
+- `index.php` に7ブロックの大枠がある。ABOUT・SPEAKER・SESSION・REGISTRATIONは見出しとコメントのみ、フッターも内容未実装。フォーム項目・確認画面・JSON保存・管理者一覧はまだ作っていない。
+- ヘッダーのロゴは画像ではなく、`h1.site-header_logo` 内の `<a href="#top">WDC</a>` というテキスト。現在のナビはABOUT・SPEAKER・SESSIONの3リンクで、ヘッダー全体は制作途中。
+- `.site-header_inner` に `display: flex`・`justify-content: space-between`・`align-items: center`・`padding: 1rem` を指定済み。ナビ一覧の横並びや、ヘッダーの追従・背景切り替えは未実装。
+- ロゴはMontserrat、`font-size: 1.75rem`（標準のルート16pxなら28px）、`font-weight: 700`（boldと同じ）、`line-height: 1`、`letter-spacing: 0.05em`（Figmaの5%）、色 `#D136D1`。ルートの文字サイズを変更する場合はrem換算を見直す。
+- `asset/js/` フォルダはあるがJavaScriptファイルはまだない。SPの完成見本 `asset/img/design/SP_2c.png` は保存済みだが、SP実装へ自動着手しない。
+
+### 未修正・整理候補
+
+- メイン画像はHTMLが `main-visual__image`（アンダースコア2本）、CSSが `.main-visual_image`（1本）で不一致。`conference.css` の画像用ルールが適用されない状態。原因は説明済みだが、診断だけの依頼だったためコードは変更していない。次の修正依頼時に両者を揃える。
+- ヘッダーの `site-header_inner`・`site-header_logo` は現在1本のアンダースコアでHTML・CSSが一致している。`site-header__nav` は2本。命名を統一する場合は、片方だけを変更して不一致を作らない。
+- ロゴの `transition: color 0.3s ease` は残っているが、ホバーで色を変更する指定はないため現状では効果がない。色のコメント `/* White */` も実際のピンク系と異なる。いずれも説明済み・未修正で、今回の文書更新では触らない。
+- リンクの下線は `base.css` の `a { text-decoration: none; }`、リストの点は `list-style: none` で消している。ロゴやinnerに同じ下線除去を重複して書く必要はない。
+
+### 表示確認・Git
+
+- 現在の作業先は `C:\Users\nobuy\Desktop\$work\③conference`。以前のDocuments配下の課題フォルダは編集しない。
+- MAMPのDocumentRootも上記フォルダで、確認URLは `http://localhost/`。2026-10-25に、このURLで配信されるHTML・`conference.css` が保存済みファイルと一致し、どちらもHTTP 200で取得できることを確認した。
+- ユーザーはChromeで正常表示を確認済み。Edgeでは表示崩れの報告があった一方、新規の確認用Edgeではロゴの28px・太字・ピンクとヘッダーのFlexが反映された。Edge自体の不具合とは断定せず、再発時は保存状態・表示URL・キャッシュを切り分ける。Figmaとの完成比較や全ブラウザの確認が済んだという意味ではない。
+- GitHubは `https://github.com/NobuyukiIchioka/conference`、ブランチは `main`。ユーザーが保存したコードの基準コミットは `f08048a`（「FV作成、メインビジュアル、ヘッダーの途中」）。文書更新はその後の変更として扱う。
+- コミット・pushは依頼された範囲だけを対象にする。「AGENTS.mdだけ」の依頼に、HTML・CSS・画像などの変更を含めない。
