@@ -16,7 +16,7 @@
         <h1 class="site-header_logo">
           <a href="#top">WDC</a>
         </h1>
-        <nav class="site-header__nav">
+        <nav class="site-header_nav">
           <ul>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#speaker">SPEAKER</a></li>

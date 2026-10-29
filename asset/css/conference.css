@@ -4,19 +4,60 @@
   height: auto;
 }
 
-.site-header_inner{
+/* ヘッダー：上下30pxの余白＋中身30pxで、全体の高さは90px。 */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  padding: 30px;
+}
+
+.site-header_inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem; /* Add some padding for better spacing */
+  min-height: 30px;
 }
 
 .site-header_logo {
   font-family: "Montserrat", sans-serif;
   font-size: 1.75rem;      /* 28px */
   font-weight: 700;        /* Bold */
-  line-height: 1;          
-  letter-spacing: 0.05em; 
-  color: #D136D1;          /* White */
-  transition: color 0.3s ease; /* Smooth color transition on hover */
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: #d136d1;
+}
+
+.site-header_nav {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;         /* 16px */
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.site-header_nav ul {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+
+.about {
+  scroll-margin-top: 90px;
+}
+
+.speaker {
+  scroll-margin-top: 90px;
+}
+
+.session {
+  scroll-margin-top: 90px;
+}
+
+.registration {
+  scroll-margin-top: 90px;
 }

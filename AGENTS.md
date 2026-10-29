@@ -1,6 +1,6 @@
 # conference 制作・実装指示
 
-最終更新：2026-10-25
+最終更新：2026-10-26
 
 ## 1. 目的と進め方
 
@@ -121,13 +121,14 @@
 ページ分割、管理者一覧へのアクセス方法、JSONファイルの配置・データ構造・初期化方法・安全な読み書きの手順、流入元の選択肢、確認画面から入力画面へ戻る仕様は未決。保存方式はPHP＋JSONファイルで確定済み。
 必要になった時点でユーザーと決め、決定事項と提案を混同しない。
 
-## 11. 現在の制作状況・引き継ぎ（2026-10-25）
+## 11. 現在の制作状況・引き継ぎ（2026-10-26）
 
 ### 実装済み・途中の内容
 
 - `index.php` に7ブロックの大枠がある。ABOUT・SPEAKER・SESSION・REGISTRATIONは見出しとコメントのみ、フッターも内容未実装。フォーム項目・確認画面・JSON保存・管理者一覧はまだ作っていない。
 - ヘッダーのロゴは画像ではなく、`h1.site-header_logo` 内の `<a href="#top">WDC</a>` というテキスト。現在のナビはABOUT・SPEAKER・SESSIONの3リンクで、ヘッダー全体は制作途中。
-- `.site-header_inner` に `display: flex`・`justify-content: space-between`・`align-items: center`・`padding: 1rem` を指定済み。ナビ一覧の横並びや、ヘッダーの追従・背景切り替えは未実装。
+- PCヘッダーは `.site-header` の上下左右 `padding: 30px` と `.site-header_inner` の `height: 30px` で全体90px。innerのFlexで左右に振り分け、上下中央に配置する。ヘッダーは `position: fixed` で画像上に重ねて上部に追従する。スクロール時の背景切り替えとSP対応はまだ実装していない。
+- ナビはMontserrat・16px（`1rem`）・700・行高1・字間0.05em・白。`.site-header__nav ul` のFlexと `gap: 30px` で横並びにする。FigmaのPCヘッダー（9:31）と2026-10-26のユーザー指定に基づく。
 - ロゴはMontserrat、`font-size: 1.75rem`（標準のルート16pxなら28px）、`font-weight: 700`（boldと同じ）、`line-height: 1`、`letter-spacing: 0.05em`（Figmaの5%）、色 `#D136D1`。ルートの文字サイズを変更する場合はrem換算を見直す。
 - `asset/js/` フォルダはあるがJavaScriptファイルはまだない。SPの完成見本 `asset/img/design/SP_2c.png` は保存済みだが、SP実装へ自動着手しない。
 
@@ -135,7 +136,7 @@
 
 - メイン画像はHTMLが `main-visual__image`（アンダースコア2本）、CSSが `.main-visual_image`（1本）で不一致。`conference.css` の画像用ルールが適用されない状態。原因は説明済みだが、診断だけの依頼だったためコードは変更していない。次の修正依頼時に両者を揃える。
 - ヘッダーの `site-header_inner`・`site-header_logo` は現在1本のアンダースコアでHTML・CSSが一致している。`site-header__nav` は2本。命名を統一する場合は、片方だけを変更して不一致を作らない。
-- ロゴの `transition: color 0.3s ease` は残っているが、ホバーで色を変更する指定はないため現状では効果がない。色のコメント `/* White */` も実際のピンク系と異なる。いずれも説明済み・未修正で、今回の文書更新では触らない。
+- ロゴの効果のない `transition: color 0.3s ease` と、色に合っていない `/* White */` コメントは、2026-10-26のヘッダー実装時に削除済み。未指定のホバー演出は追加していない。
 - リンクの下線は `base.css` の `a { text-decoration: none; }`、リストの点は `list-style: none` で消している。ロゴやinnerに同じ下線除去を重複して書く必要はない。
 
 ### 表示確認・Git
