@@ -1,33 +1,40 @@
 /* スタイルガイド */
 /*** 1. Style guide（START共通の色・文字・レイアウト設定） ***/
+/* サイト共通の変数 */
 :root {
-  /* 共通レイアウト（コンテンツ幅・左右余白） */
-  --content-width: 1110px;
-  --side-padding: 20px;
-
   /* COLOR */
-  --color-brand: #D136D1;            /* ブランドカラー */
-  --color-text: #FFF;                /* 基本文字 */
-  --color-background: #141414;       /* 背景色 */
-  --color-gradient-start: #C41A7F;   /* グラデーション：0% */
-  --color-gradient-end: #664BBF;     /* グラデーション：100% */
-  --color-button-shadow: #DD118E;    /* ボタンのシャドー色 */
+  --color-brand: #D136D1;
+  --color-text: #FFF;
+  --color-background: #141414;
+  --color-gradient-start: #C41A7F;
+  --color-gradient-end: #664BBF;
+  --color-button-shadow: #DD118E;
 
-  --site-header-height: 90px;  /* ヘッダーの高さ（PC） */
-
-  /* Font family（書体） */
+  /* 書体 */
   --font-family-base: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
   --font-family-title: "Montserrat", Arial, sans-serif;
+} /*
+
+/* 共通レイアウト：ここからは :root の外 */
+
+/* 各セクションの上下余白 */
+.section {
+  padding-block: 110px;
 }
+
+/* コンテンツの最大幅・左右余白・中央配置 */
+.content-width {
+  width: calc(100% - 40px);
+  max-width: 1110px;
+  margin-inline: auto;
+}
+
 
 @media (max-width: 767px) {
   :root {
     --site-header-height: 60px;
-
-    /* SPテキスト：PCと異なる値だけを変更する。字間・行高は共通。 */
   }
 }
-
 
 /* ページの基本色 */
 body {
@@ -62,7 +69,6 @@ h3 {
   font-weight: bold;
   letter-spacing: 0.05em;
   line-height: 1;
-  text-align: center;
 }
 
 .h3-sub {
@@ -74,24 +80,24 @@ h3 {
   font-weight: 700;
   letter-spacing: 0.05em;
 }
-
+/* 
 @media (max-width: 767px) {
   h2 {
-    
+    font-size: 2.5rem;
   }
 
   .h2-sub {
-    
+    font-size: 1.25rem;  
   }
 
   h3 {
-    
+    font-size: 2.5rem;
   }
 
   .h3-sub {
     
   }
-}
+} */
 
 /*** 3. Shared CSS（共通CSS)***/
 .title2 {
@@ -100,12 +106,14 @@ h3 {
   align-items: center;
   gap: 10px;
   text-align: center;
+  margin-bottom: 60px;
 }
 
 .title3 {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 40px;
 }
 
 
@@ -173,6 +181,17 @@ h3 {
   height: auto;
 }
 
+.main-visual {
+  position: relative;
+}
+
+.main-visual_button {
+  position: absolute;
+  left: 9%;
+  top: 79.5%;
+}
+
+
 /* ヘッダー：上下30pxの余白＋中身30pxで、全体の高さは90px。 */
 .site-header {
   position: fixed;
@@ -217,39 +236,208 @@ h3 {
 
 /* *********** ABOUT ********* */
 
-.about {
-  scroll-margin-top: 90px;
+.about-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 596px;
+  align-items: center;
+  gap: 60px;
 }
 
-.main-visual {
-  position: relative;
+.about-image {
+  width: 100%;
+  height: auto;
 }
 
-/* .main-visual_button {
-  position: absolute;
-  top: calc(var(--site-header-height) + 700px);
-  left: 170px;
+.about-theme{
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.about-title {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.about-description {
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.about-info {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  column-gap: 20px;
+  row-gap: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  margin-bottom: 25px;
+}
+
+.about-info dt {
+  font-weight: 700;
+}
+
+
+/* *********** SPEAKER ********* */
+.speaker {
+  background-image: linear-gradient(
+    143.7deg, /* 色が変化する方向を斜めにする */
+    #0F002E 0%,
+    #0E002E 0%,
+    #1E092B 23.1%,
+    #320C65 49.12%,
+    #A01B7C 79.8%,
+    #C21780 100%
+  );
+}
+
+.speaker-list {
+  display: grid;
+  row-gap: 80px;
+}
+
+/* 写真とテキストを横並びにする */
+.speaker-card {
+  display: grid;
+  grid-template-columns: 605px minmax(0, 1fr);
+  gap: 60px;
+}
+
+/* 2人目：左が写真、右が605pxのテキスト */
+.speaker-card--reverse {
+  grid-template-columns: minmax(0, 1fr) 605px;
+}
+
+/* Flexbox で実装する場合 */
+/* .speaker-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+} */
+ /* 2人目だけ、写真を左・テキストを右にする */
+/* .speaker-card--reverse {
+  flex-direction: row-reverse;
 } */
 
-.main-visual_button {
-  position: absolute;
-  left: 9%;
-  top: 79.5%;
+/* テキスト：幅605pxで固定する */
+.speaker-text {
+  width: 605px;
+  flex-shrink: 0;
+}
+
+.speaker-description {
+  font-size: 16px;
+  font-weight: 500;       /* Medium */
+  line-height: 1.8;       /* 16px × 1.8 = 28.8px */
+  letter-spacing: 0.05em; /* 5% */
+}
+
+/* 写真：残った幅に合わせて伸縮する */
+.speaker-image {
+  width: 100%;
+    /* flex: 1; */ /* 写真の縦横比を維持ため。フレックスボックスでも可能 */
+  min-width: 0;
+  height: auto;
+}
+
+/* 写真をテキストより先に配置する */
+.speaker-card--reverse .speaker-image {
+  order: -1;
 }
 
 
 
-
-
-
-.speaker {
-  scroll-margin-top: 90px;
+/* *********** SESSION ********* */
+/* 1行分：左に時刻、右に講演内容 */
+.session-item {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  align-items: start;
+  padding: 40px 30px;
+  border-bottom: 1px solid var(--color-brand);
 }
 
-.session {
-  scroll-margin-top: 90px;
+/* 時刻と講演タイトルに共通する文字設定 */
+.session-time,
+.session-title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.05em;
 }
 
+.session-time {
+  font-family: var(--font-family-title);
+}
+
+.session-title {
+  font-family: var(--font-family-base);
+  margin-bottom: 15px;
+}
+
+/* スピーカー名と説明文に共通する文字設定 */
+.session-details {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+
+/* ***********  REGISTRATION ********* */
 .registration {
-  scroll-margin-top: 90px;
+  background-image: url("../img/bg.png");
+  background-repeat: repeat;
+  background-size: 400px 400px;
 }
+
+.registration-description {
+  margin-top: 60px;
+  padding: 90px 0 80px;
+  border: 5px solid var(--color-brand);
+  border-radius: 20px;
+  background-color: #1A1A1A;
+}
+
+.registration-form {
+  width: 100%;
+  max-width: 790px;
+  margin-inline: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.form-label::after {
+  display: inline-block;
+  font-family: var(--font-family-base);
+  letter-spacing: 0.05em;
+  line-height: 12.9px;
+  /* 小さい文字をラベル行の上端に揃える。 */
+  vertical-align: top;
+  content: "*必須";
+  margin-left: 9px;
+  color: var(--color-brand);
+  font-size: 11.2px;
+  font-weight: 700;
+  text-align: center;
+}
+
