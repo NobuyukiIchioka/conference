@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" />
     <link rel="stylesheet" href="./asset/css/conference.css" />
   </head>
+
+  
   <body id="top">
     <!-- ヘッダー -->
     <header class="site-header">
@@ -30,7 +32,8 @@
       <!-- ファーストビュー（メインビジュアル） -->
       <section class="main-visual">
         <!-- タイトル・開催情報を含むメインビジュアルを、そのまま表示する。 -->
-        <img class="main-visual_image" src="./asset/img/ogp.png" alt="Web Design Conference vol.24 WORK REVOLUTION。2030年5月30日開催。ショーン・デイビッド・ジュニア氏（Webデザイナー）"/>
+        <img class="main-visual_image" src="./asset/img/opg4.png" alt="Web Design Conference vol.24 WORK REVOLUTION。2030年5月30日開催。ショーン・デイビッド・ジュニア氏（Webデザイナー）"/>
+        <img class="main-visual_script" src="./asset/img/teiji-de-kaerumon.png" alt="teiji de kaerumon" />
        <a class="main-visual_button button button-a h3-sub bg-gradient" href="#registration">お申し込み</a>
       </section>
       <!-- ABOUT -->
@@ -247,7 +250,8 @@
 
     <!-- フッター -->
     <footer class="site-footer">
-      <!-- フッターの内容をここに追加する。 -->
+        <p class="site-footer_copyright"> <small>&copy;2030 Web Design Conference</small></p>
     </footer>
+  <script src="./asset/js/header.js"></script>
   </body>
 </html>

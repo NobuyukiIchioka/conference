@@ -42,6 +42,7 @@ body {
   background-color: var(--color-background);
   font-family: var(--font-family-base);
   font-size: 1rem;
+  letter-spacing: 0.05em;
 }
 
 h2 {
@@ -173,25 +174,7 @@ h3 {
 
 
 
-
-
-/* メインビジュアル：画像の比率を保ち、全体を画面幅いっぱいに表示する。 */
-.main-visual_image {
-  width: 100%;
-  height: auto;
-}
-
-.main-visual {
-  position: relative;
-}
-
-.main-visual_button {
-  position: absolute;
-  left: 9%;
-  top: 79.5%;
-}
-
-
+/* ***********　HEADER　*********** */
 /* ヘッダー：上下30pxの余白＋中身30pxで、全体の高さは90px。 */
 .site-header {
   position: fixed;
@@ -232,6 +215,93 @@ h3 {
   align-items: center;
   gap: 30px;
 }
+
+
+/* ***********　first view　*********** */
+/* ** ファーストビューのアニメーション ** */
+/* メイン画像：ゆっくり表示 */
+.main-visual_image {
+  animation: fvFade 2s ease-out backwards;
+}
+
+/* ヘッダー：0.6秒後から表示 */
+.site-header {
+  animation: fvFade 0.8s ease 0.6s backwards;
+}
+
+/* ボタン：0.9秒後から、少し下の位置から表示 */
+.main-visual_button {
+  animation: fvUp 0.8s ease-out 0.9s backwards;
+}
+
+/* 筆記体：1.2秒後から、左から右へ表示 */
+.main-visual_script {
+  animation: fvSign 1.3s cubic-bezier(.65, 0, .35, 1)
+    1.2s backwards;
+}
+
+/* フェードイン */
+@keyframes fvFade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* フェードしながら上がる */
+@keyframes fvUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* 筆記体を左から右へ見せる */
+@keyframes fvSign {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* 端末で「動きを減らす」が設定されていたら、最初から表示 */
+@media (prefers-reduced-motion: reduce) {
+  .main-visual_image,
+  .site-header,
+  .main-visual_button,
+  .main-visual_script {
+    animation: none;
+  }
+}
+
+/* メインビジュアル：画像の比率を保ち、全体を画面幅いっぱいに表示する。 */
+.main-visual_image {
+  width: 100%;
+  height: auto;
+}
+
+.main-visual {
+  position: relative;
+}
+
+.main-visual_script {
+  position: absolute;
+  right: 43%;
+  top: 57.5%;
+  width: 24%;
+  max-width: calc(50% - 320px);
+  height: auto;
+}
+
+.main-visual_button {
+  position: absolute;
+  left: 7%;
+  top: 70%;
+}
+
+
 
 
 /* *********** ABOUT ********* */
@@ -441,3 +511,82 @@ h3 {
   text-align: center;
 }
 
+/* 入力欄の共通設定（ラジオボタン以外） */
+.registration-form input:not([type="radio"]),
+.registration-form select,
+.registration-form textarea {
+  width: 300px;
+  max-width: 100%;
+  height: 35px;
+  padding: 7px;
+  border: 1px solid #AAA;
+  border-radius: 6px;
+  background-color: #FFF;
+  color: #333;
+  line-height: 1.15;
+}
+
+.registration-form input[type="tel"] {
+  width: 200px;
+}
+
+.registration-form textarea {
+  width: 600px;
+  height: 200px;
+}
+
+.registration-form textarea::placeholder {
+  color: #8B8B8B;
+  opacity: 1;
+}
+
+/* legendは通常のFlexアイテムではないため、下の余白を直接指定する。 */
+fieldset.form-group > legend {
+  margin-bottom: 10px;
+}
+
+.form-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 35px;
+}
+
+.form-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.form-options input[type="radio"] {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.registration-form button[type="submit"] {
+  align-self: center;
+  margin-top: 20px;
+}
+
+
+/* ***********  FOOTER ********* */
+/* フッター全体の配置・大きさ */
+.site-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 160px;
+}
+
+/* コピーライトの文字 */
+.site-footer_copyright {
+  font-family: var(--font-family-title);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+}
