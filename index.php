@@ -33,7 +33,7 @@
       <section class="main-visual">
         <!-- タイトル・開催情報を含むメインビジュアルを、そのまま表示する。 -->
         <img class="main-visual_image" src="./asset/img/opg4.png" alt="Web Design Conference vol.24 WORK REVOLUTION。2030年5月30日開催。ショーン・デイビッド・ジュニア氏（Webデザイナー）"/>
-        <img class="main-visual_script" src="./asset/img/teiji-de-kaerumon.png" alt="teiji de kaerumon" />
+        <img class="main-visual_script" src="./asset/img/teiji-de-kaerumon.png" alt="teiji de kaerumon" width="1366" height="700"/>
        <a class="main-visual_button button button-a h3-sub bg-gradient" href="#registration">お申し込み</a>
       </section>
       <!-- ABOUT -->
@@ -62,9 +62,6 @@
                 <dt>参加費</dt>
                 <dd>無料</dd>
               </dl>
-              <!-- <button class="button button-a h3-sub bg-gradient">
-                <a href="#registration">お申し込み</a>
-              </button> -->
 
               <a class="button button-b h3-sub bg-gradient-reverse" href="#registration">お申し込み</a>
             </div>
@@ -96,7 +93,7 @@
                   アンドロイドのように働くべきと語るショーン氏の考え方はディストピア思想と揶揄されるが、本イベントでは氏の考え方をたっぷりと味わいたい。</p>
                 </div>
               </div>
-              <img class="speaker-image" src="./asset/img/sean.png" alt="ショーン・デイビット・ジュニア">
+              <img class="speaker-image" src="./asset/img/sean.png" alt="ショーン・デイビット・ジュニア"  width="445" height="460" loading="lazy">
             </article>
 
             <!-- 2人目だけ、CSSで写真を左・紹介文を右に配置する。 -->
@@ -111,7 +108,7 @@
                   会社員をしながらプロテニスプレイヤーとしても生計を立てているミホコ氏。平日は仕事で忙しい中、一体どのようにテニスの練習時間を捻出しているのか？会社にもテニスラケットを持ち込むというミホコ氏のワーキングスタイルに迫る。</p>
                 </div>
               </div>
-              <img class="speaker-image" src="./asset/img/mihoko.png" alt="ミホコ・テニース" loading="lazy">
+              <img class="speaker-image" src="./asset/img/mihoko.png" alt="ミホコ・テニース" width="445" height="460" loading="lazy">
             </article>
 
             <article class="speaker-card">
@@ -125,7 +122,7 @@
                   「絶対に自宅でフルリモートで働く」という徹底したモットーに基づき、約7年間外出をしていない。インターネットを信仰しており、リアルやオフラインよりもオンラインを最重要視するライフスタイルを実践している。「外に出たら負け」が口グセのジェシカ氏の『超ネット仕事術』は必聴。</p>
                 </div>
               </div>
-              <img class="speaker-image" src="./asset/img/jecica.png" alt="ジェシカ・パンナコッタ" loading="lazy">
+              <img class="speaker-image" src="./asset/img/jecica.png" alt="ジェシカ・パンナコッタ" width="445" height="460" loading="lazy">
             </article>
           </div>
         </div>
@@ -252,6 +249,12 @@
     <footer class="site-footer">
         <p class="site-footer_copyright"> <small>&copy;2030 Web Design Conference</small></p>
     </footer>
+    
+    <!-- ページのトップボタン -->
+    <a href="#top" class="page-top-button" >
+      <img src="./asset/img/page-top.svg" alt="ページの先頭へ戻る"/>
+    </a>
+
   <script src="./asset/js/header.js"></script>
   </body>
 </html>

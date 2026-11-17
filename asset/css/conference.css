@@ -36,6 +36,18 @@
   }
 }
 
+/* ページ内リンクの移動 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 端末で動きを減らす設定が有効な場合 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* ページの基本色 */
 body {
   color: var(--color-text);
@@ -589,4 +601,28 @@ fieldset.form-group > legend {
   font-weight: 700;
   line-height: 1.15;
   text-align: center;
+}
+
+
+/* ***********  PAGE TOP BUTTON ********* */
+.page-top-button {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 5;
+
+  width: 80px;
+  height: 80px;
+  transition: opacity 0.5s ease;
+}
+
+.page-top-button.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-top-button {
+    transition: none;
+  }
 }
