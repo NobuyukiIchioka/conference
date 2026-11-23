@@ -32,8 +32,8 @@
       <!-- ファーストビュー（メインビジュアル） -->
       <section class="main-visual">
         <!-- タイトル・開催情報を含むメインビジュアルを、そのまま表示する。 -->
-        <img class="main-visual_image" src="./asset/img/opg4.png" alt="Web Design Conference vol.24 WORK REVOLUTION。2030年5月30日開催。ショーン・デイビッド・ジュニア氏（Webデザイナー）"/>
-        <img class="main-visual_script" src="./asset/img/teiji-de-kaerumon.png" alt="teiji de kaerumon" width="1366" height="700"/>
+        <img class="main-visual_image" src="./asset/img/ogp5.png" alt="Web Design Conference vol.24 WORK REVOLUTION。2030年5月30日開催。ショーン・デイビッド・ジュニア氏（Webデザイナー）" width="1200" height="630"/>
+        <img class="main-visual_script" src="./asset/img/teiji-de-kaerumon.png" alt="teiji de kaerumon"/>
        <a class="main-visual_button button button-a h3-sub bg-gradient" href="#registration">お申し込み</a>
       </section>
       <!-- ABOUT -->

@@ -300,17 +300,18 @@ h3 {
 
 .main-visual_script {
   position: absolute;
-  right: 43%;
-  top: 57.5%;
-  width: 24%;
+  right: 42%;
+  top: 65.5%;
+  width: 27%;
   max-width: calc(50% - 320px);
   height: auto;
 }
 
 .main-visual_button {
   position: absolute;
-  left: 7%;
-  top: 70%;
+  left: 9%;
+    top: 80%;
+
 }
 
 
